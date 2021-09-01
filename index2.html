@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El juego del Snake</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="control">
+        <h1>CONTROLES </h1>
+        <form action="input">Nivel:
+            <select id="nivel">
+                <option class="selectNivel" id="nivel1" value="6">1</option>
+                <option class="selectNivel" id="nivel2" value="7">2</option>          
+                <option class="selectNivel" id="nivel3" value="8">3</option>
+                <option class="selectNivel" id="nivel4" value="9">4</option>  
+                <option class="selectNivel" id="nivel5" value="10">5</option>           
+            </select>
+        </form>
+        
+        <div id=contador>0</div>
+
+        <button id="restart" onclick="restart()">RESTART</button>
+        <br>
+        <button id="borrar" onclick="borrar()">BORRAR</button>
+    </div>
+
+    <div class="panel" id="panel">
+        <button id="jugar" onclick="nivelx ()">¡A JUGAR!</button>
+    </div>
+
+   
+<!--Con este script se realiza la suma y se cambia el estilo de las fichas-->
+    <script>
+        function sumar(){
+            let resultado = document.getElementById("contador").textContent;
+            let suma = parseInt(resultado+++1)
+            document.getElementById("contador").innerHTML = suma;
+            let  snakeSuma = "#snake"+suma;
+            let  snakeSuma1 = "#snake"+(suma-1);
+            let  snakeSuma2 = "#snake"+(suma-2);
+            $(snakeSuma).addClass("fichasSeleccionado");
+            $(snakeSuma1).addClass("fichasSeleccionado"); 
+            $(snakeSuma2).addClass("fichasSeleccionado");       
+        }   
+    </script>
+
+<!--Con este script se realiza la resta-->
+    <script>
+        function restar(){
+            let resultado = document.getElementById("contador").textContent;
+            let suma = parseInt(resultado --- 1)
+            document.getElementById("contador").innerHTML = suma;
+            let  snakeSuma = "#snake"+suma;
+            let  snakeSuma1 = "#snake"+(suma+1);
+            let  snakeSuma2 = "#snake"+(suma+2);
+            $(snakeSuma).addClass("fichasSeleccionado");
+            $(snakeSuma1).addClass("fichasSeleccionado"); 
+            $(snakeSuma2).addClass("fichasSeleccionado");     
+        }
+    </script>
+
+<!--Con este script se realiza la suma +5 y se cambia el estilo de las fichas-->
+<script>
+    function sumarx(){
+        let resultado = document.getElementById("contador").textContent; //Define "resultado" como el numero del contador
+        valorSeleccionado = document.getElementById('nivel').value; //Obtiene el valor asignado a ese nivel y lo convierte en un Int
+        valorSeleccionadoNum = parseInt(valorSeleccionado);
+        let suma = parseInt(resultado +++ valorSeleccionadoNum) //Define "suma" el resultado + el valor de ese nivel
+        document.getElementById("contador").innerHTML = suma; //Cambia en el html el numero del contador
+        
+        let snakeSuma = "#snake"+suma;
+        let snakeSuma1 = "#snake"+(suma-valorSeleccionado);
+        let snakeSuma2 = "#snake"+(suma-(2*valorSeleccionado));
+        $(snakeSuma).addClass("fichasSeleccionado");
+        $(snakeSuma1).addClass("fichasSeleccionado");
+        $(snakeSuma2).addClass("fichasSeleccionado");
+
+       
+
+    }   
+</script>
+
+<!--Con este script se realiza la suma -5 y se cambia el estilo de las fichas-->
+<script>
+    function restarx(){
+        let resultado = document.getElementById("contador").textContent; //Define "resultado" como el numero del contador
+        valorSeleccionado = document.getElementById('nivel').value; //Obtiene el valor asignado a ese nivel y lo convierte en un Int
+        valorSeleccionadoNum = parseInt(valorSeleccionado);
+        let suma = parseInt(resultado --- valorSeleccionadoNum) //Define "suma" el resultado + el valor de ese nivel
+        document.getElementById("contador").innerHTML = suma; //Cambia en el html el numero del contador
+        
+        let snakeSuma = "#snake"+suma;
+        let snakeSuma1 = "#snake"+(suma+valorSeleccionado);
+        let snakeSuma2 = "#snake"+(suma+(2*valorSeleccionado));
+        $(snakeSuma).addClass("fichasSeleccionado");
+        $(snakeSuma1).addClass("fichasSeleccionado");
+        $(snakeSuma2).addClass("fichasSeleccionado");
+    }   
+</script>
+
+<!--Con este script se pueden utilizar las teclas para sumar y restar-->
+    <script>
+        function PulsarTecla(e){   
+            var tecla = e.keyCode;
+                if(tecla==39){
+                    borrar(); //Borra las fichas
+                    var valorSeleccionado = document.getElementById('nivel').value;  //Se crean nuevas fichas en blanco
+                    let fichamax = valorSeleccionado*valorSeleccionado;
+                    for (let step = 0; step < fichamax; step++){
+                        $('.panel').append('<div class="fichas"' + ' id=snake' + (step+1) +'>' + (step+1) +'</div>');     
+                    }
+                    sumar(); //Se suma y se colorea la ficha elegida
+                }
+
+                else if(tecla==40){
+                    borrar(); //Borra las fichas
+                    var valorSeleccionado = document.getElementById('nivel').value;  //Se crean nuevas fichas en blanco
+                    let fichamax = valorSeleccionado*valorSeleccionado;
+                    for (let step = 0; step < fichamax; step++){
+                        $('.panel').append('<div class="fichas"' + ' id=snake' + (step+1) +'>' + (step+1) +'</div>');     
+                    }
+                    sumarx(); //Se suma y se colorea la ficha elegida
+                }
+
+                else if(tecla==38){
+                    borrar(); //Borra las fichas                  
+                    var valorSeleccionado = document.getElementById('nivel').value;  //Se crean nuevas fichas en blanco
+                    let fichamax = valorSeleccionado*valorSeleccionado;
+                    for (let step = 0; step < fichamax; step++){
+                        $('.panel').append('<div class="fichas"' + ' id=snake' + (step+1) +'>' + (step+1) +'</div>');     
+                    }
+                    restarx(); //Se resta y se colorea la ficha elegida
+                }
+
+                else if(tecla==37){
+                    borrar(); //Borra las fichas                    
+                    var valorSeleccionado = document.getElementById('nivel').value;  //Se crean nuevas fichas en blanco
+                    let fichamax = valorSeleccionado*valorSeleccionado;
+                    for (let step = 0; step < fichamax; step++){
+                        $('.panel').append('<div class="fichas"' + ' id=snake' + (step+1) +'>' + (step+1) +'</div>');     
+                    }
+                    restar(); //Se resta y se colorea la ficha elegida
+                }
+        }
+        document.onkeydown = PulsarTecla
+    </script>
+
+<!--Con este script se crea el panel de fichas según el nivel seleccionado-->
+<script>
+    function nivelx(){
+
+        $('#panel').remove(); /*Se restablece el panel*/
+        $('html').append('<div class="panel" id="panel">');
+        let cero = 0;
+        document.getElementById("contador").innerHTML = cero
+
+        var valorSeleccionado = document.getElementById('nivel').value;  /*Se crean las fichas según el nivel elegido*/
+        console.log(valorSeleccionado);
+        let fichamax = valorSeleccionado*valorSeleccionado;
+        console.log(fichamax);
+             for (let step = 0; step < fichamax; step++){
+                $('.panel').append('<div class="fichas"' + ' id=snake' + (step+1) +'>' + (step+1) +'</div>');     
+        }
+
+        if (valorSeleccionado == 6) {   /*Se selecciona un estilo dependiendo del nivel para obtener el ancho adecuado*/
+            $("#panel").addClass("panelSeleccionado1");}
+        else if (valorSeleccionado == 7) {
+            $("#panel").addClass("panelSeleccionado2");}
+        else if (valorSeleccionado == 8) {
+            $("#panel").addClass("panelSeleccionado3");}
+        else if (valorSeleccionado == 9) {
+            $("#panel").addClass("panelSeleccionado4");}
+        else if (valorSeleccionado == 10) {
+            $("#panel").addClass("panelSeleccionado5");}    
+    }
+</script>
+
+<script>
+    function restart(){
+        $('#panel').remove();
+        $('html').append('<div class="panel" id="panel"><button id="jugar" onclick="nivelx()">¡A JUGAR!</button></div>');
+        let cero = 0;
+        document.getElementById("contador").innerHTML = cero
+    }
+</script>
+
+<!--Con este script se borran todas las fichas del panel-->
+<script>
+    function borrar(){
+        $('.panel div').remove();
+    }
+</script>
+
+<!--Con este script se da movimiento a las fichas-->
+<script>
+    function movimiento(){
+        for ( let i=0; i<10; i++){
+            console.log(i)
+        }
+    }
+</script>
+
+</body>
+</html>

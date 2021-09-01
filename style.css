@@ -1,0 +1,136 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+body{
+    background-color:rgb(255, 183, 64,0.15);
+}
+
+a{
+    text-decoration:none;
+}
+.control{
+    position: absolute;
+    left: 25%;
+    top: 50px;
+    height: 500px;
+    border-radius: 25px;
+    border:  15px solid rgb(255, 183, 64);
+    background-color: rgb(100, 201, 207);
+    color: rgb(66, 66, 66);
+}
+
+.control form{
+    width: 130px;
+    padding: 5px;
+    border-radius: 50px;
+    border:  5px solid rgb(255, 183, 64);
+    background-color: rgb(255, 183, 64);
+    margin-left: 20%;
+}
+
+.control form select{
+    padding: 5px;
+    border-radius: 50px;
+    border:  2px solid rgb(255, 183, 64);
+    background-color: rgb(100, 201, 207);
+    margin-left: 25%;
+}
+
+.panel{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50px;
+    border-radius: 25px;
+    border:  15px solid rgb(255, 183, 64);
+    background-color: rgb(100, 201, 207);
+    color: rgb(66, 66, 66,0.25);
+}
+
+.panelSeleccionado1 .panelSeleccionado2 .panelSeleccionado3 .panelSeleccionado4 .panelSeleccionado5{
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    border-radius: 25px;
+    border:  15px solid rgb(255, 183, 64);
+    background-color: rgb(100, 201, 207);
+    color: rgb(66, 66, 66,0.25);
+}
+
+.panelSeleccionado1{width: 305px; height: 305px; position: absolute; left: 50%; top:148px;}
+.panelSeleccionado2{width: 350px; height: 350px;position: absolute; left: 50%; top:126px;}
+.panelSeleccionado3{width: 405px; height: 405px;position: absolute; left: 50%; top:104px;}
+.panelSeleccionado4{width: 450px; height: 450px;position: absolute; left: 50%; top:82px;}
+.panelSeleccionado5{width: 500px; height: 500px;position: absolute; left: 50%; }
+
+
+h1{
+    margin-left: 50px;
+}
+#contador{
+    margin: 50px;
+    position: relative;
+    border:  5px solid rgb(255, 183, 64);
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    font-size: 80px;
+    background-color: rgb(253, 228, 156);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    width: 75px;
+    height: 30px;
+    position: relative;
+    left: 33%;
+    margin-bottom: 20px;
+    background-color: rgb(253, 228, 156);
+    border-radius: 10px;
+}
+
+.panel #jugar{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(255, 183, 64);
+    border-radius: 10px;
+    margin-top: 33%;
+    
+}
+
+.fichas{
+    background-color: rgb(253, 228, 156);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    float: left;
+    margin: 7.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+
+.fichasSeleccionado{
+    color:rgb(66, 66, 66);
+    width: 35px;
+    height: 35px;
+    background-color: rgb(255, 183, 64);
+    background: radial-gradient(at top left, rgb(255, 183, 64)0 20%, rgb(104, 74, 27));
+    -ms-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
+    border-radius: 25px;
+    margin: 7.5px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+
+}
